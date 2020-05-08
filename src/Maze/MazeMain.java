@@ -35,7 +35,7 @@ public class MazeMain {
                 maze.printMap();
                 print(info);
                 print(options);
-                print(moves);  // testing
+                print(moves + " moves used so far");  // testing
 
             } else if (maze.didIWin() == true) {
                 print("error or winner");
@@ -61,26 +61,26 @@ public class MazeMain {
     public static String userMove() {
         //take desired direction to move:
 
-        String direction = scanner.nextLine().toUpperCase();
+        String direction = scanner.nextLine().toUpperCase().trim();
 
 
 
         if (direction.equals("R") || direction.equals("L") || direction.equals("U") || direction.equals("D") || direction.equals("Q")) {
             // change this to switch - getting quit error
-            if (direction.equals("R") && (maze.canIMoveRight())) {
-                maze.moveRight();
+            if (direction.equals("Q")){
+                print("Thanks for playing ... Bye Bye now");
+                System.exit(0);
             } else if (direction.equals("L") && (maze.canIMoveLeft())) {
                 maze.moveLeft();
             } else if (direction.equals("U") && (maze.canIMoveUp())) {
                 maze.moveUp();
             } else if (direction.equals("D") && (maze.canIMoveDown())) {
                 maze.moveDown();
+            } else if (direction.equals("R") && (maze.canIMoveRight())) {
+                maze.moveRight();
             } else if (maze.isThereAPit(direction)) {
                 navigatePit(direction);
-            } else if (direction.equals("Q")){
-                print("Thanks for playing ... Bye Bye now");
-                System.exit(0);
-            } else {
+            }   else {
                 print("Sorry, you’ve hit a wall.");
                 maze.printMap();
                 print(options);
@@ -102,7 +102,7 @@ public class MazeMain {
     public static void navigatePit(String direction) {
 
         print("Watch out! There's a pit ahead, jump it? (Y/N)");
-        String jump = scanner.nextLine();
+        String jump = scanner.nextLine().toUpperCase().trim();
 
         if (jump.startsWith("Y")) {
             maze.jumpOverPit(direction);
