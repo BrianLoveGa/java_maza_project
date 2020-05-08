@@ -23,15 +23,15 @@ public class MazeMain {
     static Maze maze = new Maze();
     static String options = "Escape the java maze \n move: (U)p, (D)own, (L)eft or (R)ight \n you are the X _-_ type (Q)uit to exit";
     static String info = "The dots (.) are unexplored .. The - & | are walls * is open and 0 is a pit ";
-    static int limit = 101; // - I give an extra move
+    static int limit = 10; // - I give an extra move
 
     public static void main(String[] args) {
         intro(); // play intro once
-        int x = 0;
+        // int x = 0;
         int moves = 0;
 
         // start game loop - change x value to end
-        while (x == 0) {
+        while (moves <= (limit +1)) {
             if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 userMove();
                 moves++;
@@ -44,16 +44,18 @@ public class MazeMain {
             } else if (maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 print("Winner Winner you escaped ! Congrats Maze Runner !");
                 print(" you won the game in only " + moves + " moves");
-                x++;
-                break;
+                // x = x+1;
                 // System.exit(0);
+                // break;
 
-            } else if (moves == limit) { /// it says 100 but I give an extra
+
+            } else if (moves == limit) {
                 print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
-                print("Sorry, but you didn't escape in time - YOU LOSE!");
-                x++;
-                break;
+                print("Sorry, but you didn't escape in time - YOU LOSE! ");
+                // x = x+1;
                 // System.exit(0);
+                // break;
+
             }
         }
 
