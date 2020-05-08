@@ -27,12 +27,15 @@ public class MazeMain {
     public static void main(String[] args) {
         intro();
         int x = 0;
+        int moves = 0;
         while (x == 0) {
-            if (maze.didIWin() == false) {
+            if (maze.didIWin() == false && moves < 101) {
                 userMove();
+                moves++;
                 maze.printMap();
                 print(info);
                 print(options);
+                print(moves);  // testing
 
             } else if (maze.didIWin() == true) {
                 print("error or winner");
@@ -60,19 +63,18 @@ public class MazeMain {
 
         String direction = scanner.nextLine().toUpperCase();
 
-        //Guarantee that the user selection is only one of the given options,
-        //and continue to reprompt the user until they enter a desired direction.
-        //if you cannot move in that direction, notify the user there is wall in that direction and ask them to pick a new direction to move.
+
 
         if (direction.equals("R") || direction.equals("L") || direction.equals("U") || direction.equals("D") || direction.equals("Q")) {
+            // change this to switch - getting quit error
             if (direction.equals("R") && (maze.canIMoveRight())) {
-                maze.moveRight(); // Moves your position one to the right and prints out the new board
+                maze.moveRight();
             } else if (direction.equals("L") && (maze.canIMoveLeft())) {
-                maze.moveLeft(); // Moves your position one to the left and prints out the new board
+                maze.moveLeft();
             } else if (direction.equals("U") && (maze.canIMoveUp())) {
-                maze.moveUp(); // Moves your position one above and prints out the new board
+                maze.moveUp();
             } else if (direction.equals("D") && (maze.canIMoveDown())) {
-                maze.moveDown(); // Moves your position one below and prints out the new board
+                maze.moveDown();
             } else if (maze.isThereAPit(direction)) {
                 navigatePit(direction);
             } else if (direction.equals("Q")){
@@ -92,7 +94,7 @@ public class MazeMain {
             userMove();
         }
 
-        //return a string indicating which direction the user chooses to move in
+
         return direction;
 
     }
