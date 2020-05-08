@@ -24,7 +24,7 @@ public class MazeMain {
     static Maze maze = new Maze();
     static String options = "Escape the java maze \n move: (U)p, (D)own, (L)eft or (R)ight \n you are the X _-_ type (Q)uit to exit";
     static String info = "The dots (.) are unexplored .. The - & | are walls * is open and 0 is a pit ";
-    static int limit = 10;
+    static int limit = 100; // how many moves are allowed
 
     public static void main(String[] args) {
         intro(); // play intro once
@@ -33,7 +33,20 @@ public class MazeMain {
 
         // start game loop - change x value to end
         while (moves <= (limit + 1)) {
-            if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
+            if (maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
+                print("Winner Winner you escaped ! Congrats Maze Runner !");
+                print(" You won the game in only " + moves + " moves");
+                // x = x+1;
+                 System.exit(0);
+                // break;
+
+            } else if (moves == limit) {
+                print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
+                print("Sorry, but you didn't escape in time - YOU LOSE! ");
+                // x = x+1;
+                 System.exit(0);
+                // break;
+            } else if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 userMove(); /// user picks move
                 moves++; /// keep count of moves
                 maze.printMap(); /// where you at
@@ -42,26 +55,10 @@ public class MazeMain {
                 moveAlert(moves); /// when conditions met
                 // print(moves + " moves used so far");  // testing
 
-            } else if (maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
-                print("Winner Winner you escaped ! Congrats Maze Runner !");
-                print(" you won the game in only " + moves + " moves");
-                // x = x+1;
-                // System.exit(0);
-                // break;
-
-
-            } else if (moves == limit) {
-                print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
-                print("Sorry, but you didn't escape in time - YOU LOSE! ");
-                // x = x+1;
-                // System.exit(0);
-                // break;
-
             }
         }
-
     }
-    
+
     /// borrowed like a banshee !
     public static void print(Object _o) {
         System.out.println(_o);
@@ -188,3 +185,5 @@ public class MazeMain {
 
 
 }
+
+// end of maze runner

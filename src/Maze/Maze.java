@@ -307,7 +307,7 @@ public class Maze {
      * @return true if the user is at the end, false otherwise.
      */
     public boolean didIWin() {
-        if (row == 10 && col == 19) {
+        if (row == 10 && col == 19 ) { /// r 10 c 19 default
             return true;
         } else {
             return false;
