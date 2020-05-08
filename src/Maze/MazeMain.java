@@ -1,4 +1,5 @@
 package Maze;
+
 import java.util.*;
 
 //   !!!*** WARNING - the maze has a bug and you can not jump over the pit in the corner on the way to the exit
@@ -23,7 +24,7 @@ public class MazeMain {
     static Maze maze = new Maze();
     static String options = "Escape the java maze \n move: (U)p, (D)own, (L)eft or (R)ight \n you are the X _-_ type (Q)uit to exit";
     static String info = "The dots (.) are unexplored .. The - & | are walls * is open and 0 is a pit ";
-    static int limit = 10; // - I give an extra move
+    static int limit = 10;
 
     public static void main(String[] args) {
         intro(); // play intro once
@@ -31,14 +32,14 @@ public class MazeMain {
         int moves = 0;
 
         // start game loop - change x value to end
-        while (moves <= (limit +1)) {
+        while (moves <= (limit + 1)) {
             if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
-                userMove();
-                moves++;
-                maze.printMap();
-                print(info);
-                print(options);
-                moveAlert(moves);
+                userMove(); /// user picks move
+                moves++; /// keep count of moves
+                maze.printMap(); /// where you at
+                print(info); /// what it means
+                print(options); /// what you do
+                moveAlert(moves); /// when conditions met
                 // print(moves + " moves used so far");  // testing
 
             } else if (maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
@@ -60,7 +61,8 @@ public class MazeMain {
         }
 
     }
-
+    
+    /// borrowed like a banshee !
     public static void print(Object _o) {
         System.out.println(_o);
     }
@@ -170,7 +172,7 @@ public class MazeMain {
         //add these in
         //         50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
         //         75	Alert! You have made 75 moves, you only have 25 moves left to escape.
-         //        90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
+        //        90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
 
 
         if (moves == limit / 2) {
