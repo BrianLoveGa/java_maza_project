@@ -57,6 +57,41 @@ public class MazeMain {
 
     public static void intro() {
         //welcome the user and print new map
+
+        print(" * _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_ ");
+        print("          JJJJJJJJJJJ          AAA   VVVVVVVV           VVVVVVVV   AAA ");
+        print("          J:::::::::J         A:::A  V::::::V           V::::::V  A:::A  ");
+        print("          J:::::::::J        A:::::A V::::::V           V::::::V A:::::A  ");
+        print("          JJ:::::::JJ       A:::::::AV::::::V           V::::::VA:::::::A  ");
+        print("            J:::::J        A:::::::::AV:::::V           V:::::VA:::::::::A  ");
+        print("            J:::::J       A:::::A:::::AV:::::V         V:::::VA:::::A:::::A  ");
+        print("            J:::::J      A:::::A A:::::AV:::::V       V:::::VA:::::A A:::::A  ");
+        print("            J:::::j     A:::::A   A:::::AV:::::V     V:::::VA:::::A   A:::::A  ");
+        print("            J:::::J    A:::::A     A:::::AV:::::V   V:::::VA:::::A     A:::::A  ");
+        print("JJJJJJJ     J:::::J   A:::::AAAAAAAAA:::::AV:::::V V:::::VA:::::AAAAAAAAA:::::A  ");
+        print("J:::::J     J:::::J  A:::::::::::::::::::::AV:::::V:::::VA:::::::::::::::::::::A  ");
+        print("J::::::J   J::::::J A:::::AAAAAAAAAAAAA:::::AV:::::::::VA:::::AAAAAAAAAAAAA:::::A  ");
+        print("J:::::::JJJ:::::::JA:::::A             A:::::AV:::::::VA:::::A             A:::::A  ");
+        print(" JJ:::::::::::::JJA:::::A               A:::::AV:::::VA:::::A               A:::::A  ");
+        print("   JJ:::::::::JJ A:::::A                 A:::::AV:::VA:::::A                 A:::::A  ");
+        print("     JJJJJJJJJ  AAAAAAA                   AAAAAAAVVVAAAAAAA                   AAAAAAA  ");
+        print("MMMMMMMM               MMMMMMMM               AAA               ZZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEE  ");
+        print("M:::::::M             M:::::::M              A:::A              Z:::::::::::::::::ZE::::::::::::::::::::E  ");
+        print("M::::::::M           M::::::::M             A:::::A             Z:::::::::::::::::ZE::::::::::::::::::::E  ");
+        print("M:::::::::M         M:::::::::M            A:::::::A            Z:::ZZZZZZZZ:::::Z EE::::::EEEEEEEEE::::E  ");
+        print("M::::::::::M       M::::::::::M           A:::::::::A           ZZZZZ     Z:::::Z    E:::::E       EEEEEE  ");
+        print("M:::::::::::M     M:::::::::::M          A:::::A:::::A                  Z:::::Z      E:::::E  ");
+        print("M:::::::M::::M   M::::M:::::::M         A:::::A A:::::A                Z:::::Z       E::::::EEEEEEEEEE  ");
+        print("M::::::M M::::M M::::M M::::::M        A:::::A   A:::::A              Z:::::Z        E:::::::::::::::E  ");
+        print("M::::::M  M::::M::::M  M::::::M       A:::::A     A:::::A            Z:::::Z         E:::::::::::::::E  ");
+        print("M::::::M   M:::::::M   M::::::M      A:::::AAAAAAAAA:::::A          Z:::::Z          E::::::EEEEEEEEEE  ");
+        print("M::::::M    M:::::M    M::::::M     A:::::::::::::::::::::A        Z:::::Z           E:::::E  ");
+        print("M::::::M     MMMMM     M::::::M    A:::::AAAAAAAAAAAAA:::::A    ZZZ:::::Z     ZZZZZ  E:::::E       EEEEEE  ");
+        print("M::::::M               M::::::M   A:::::A             A:::::A   Z::::::ZZZZZZZZ:::ZEE::::::EEEEEEEE:::::E  ");
+        print("M::::::M               M::::::M  A:::::A               A:::::A  Z:::::::::::::::::ZE::::::::::::::::::::E  ");
+        print("M::::::M               M::::::M A:::::A                 A:::::A Z:::::::::::::::::ZE::::::::::::::::::::E   ");
+        print("MMMMMMMM               MMMMMMMMAAAAAAA                   AAAAAAAZZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEE   ");
+        print(" * _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_ +*_ +*_ +*_ +*_ +*_ +* _ +*_ +*_  ");
         print("Welcome to Java Maze Runner!");
         print("Here is your current position:");
         maze.printMap();
