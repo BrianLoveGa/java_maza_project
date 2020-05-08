@@ -43,13 +43,13 @@ public class MazeMain {
                 print("Winner Winner you escaped ! Congrats Maze Runner !");
                 print(" you won the game in only " + moves + " moves");
                 x++;
-                System.exit(0);
+                // System.exit(0);
 
             } else if (moves == limit) { /// it says 100 but I give an extra
                 print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
-                print("Sorry, but you didn't escape in time- you lose!");
+                print("Sorry, but you didn't escape in time - YOU LOSE!");
                 x++;
-                System.exit(0);
+                // System.exit(0);
             }
         }
 
