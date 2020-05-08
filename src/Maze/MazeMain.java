@@ -1,7 +1,5 @@
 package Maze;
-
 import Maze.Maze;
-
 import java.util.*;
 
 /// use downloaded maze program
@@ -23,29 +21,35 @@ public class MazeMain {
     static Maze maze = new Maze();
     static String options = "Escape the java maze \n move: (U)p, (D)own, (L)eft or (R)ight \n you are the X _-_ type (Q)uit to exit";
     static String info = "The dots (.) are unexplored .. The - & | are walls * is open and 0 is a pit ";
+    static int limit = 101; // - I give an extra move
 
     public static void main(String[] args) {
-        intro();
+        intro(); // play intro once
         int x = 0;
         int moves = 0;
+
+        // start game loop - change x value to end
         while (x == 0) {
-            if (maze.didIWin() == false && moves < 101) {
+            if (!maze.didIWin() && moves < limit + 1) { // love intelli j auto refactor
                 userMove();
                 moves++;
                 maze.printMap();
                 print(info);
                 print(options);
-                print(moves + " moves used so far");  // testing
+                moveAlert(moves);
+                // print(moves + " moves used so far");  // testing
 
-                /// add these in
-//                50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
-//                75	Alert! You have made 75 moves, you only have 25 moves left to escape.
-//                90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
-//                100	Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[
-
-            } else if (maze.didIWin() == true) {
-                print("error or winner");
+            } else if (maze.didIWin() && moves < limit + 1) { // love intelli j auto refactor
+                print("Winner Winner you escaped ! Congrats Maze Runner !");
+                print(" you won the game in only " + moves + " moves");
                 x++;
+                System.exit(0);
+
+            } else if (moves == limit) { /// it says 100 but I give an extra
+                print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
+                print("Sorry, but you didn't escape in time- you lose!");
+                x++;
+                System.exit(0);
             }
         }
 
@@ -106,7 +110,7 @@ public class MazeMain {
 
 
         if (direction.equals("R") || direction.equals("L") || direction.equals("U") || direction.equals("D") || direction.equals("Q")) {
-            // change this to switch - getting quit error
+            // change this to switch ?
             if (direction.equals("Q")) {
                 print("Thanks for playing ... Bye Bye now");
                 System.exit(0);
@@ -123,6 +127,7 @@ public class MazeMain {
             } else {
                 print("Sorry, you’ve hit a wall.");
                 maze.printMap();
+                print("Sorry, you’ve hit a wall."); /// have to scroll to top to see so duplicate here for better UX
                 print(options);
                 userMove();
             }
@@ -153,6 +158,28 @@ public class MazeMain {
             navigatePit(direction);
         }
 
+    }
+
+    public static int moveAlert(int moves) {
+        int numMoves = moves;
+
+        /*
+        add these in
+                 50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
+                 75	Alert! You have made 75 moves, you only have 25 moves left to escape.
+                 90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
+        */
+
+        if (numMoves == limit / 2) {
+            print("Warning: You have used half of your moves, you have " + (limit / 2) + " remaining before the maze exit closes");
+        } else if (numMoves == limit - 25) {
+            print("Alert! You have made " + (limit - 25) + " moves, you only have 25 moves left to escape.");
+        } else if (numMoves == limit - 10) {
+            print("DANGER! You have made " + (limit - 10) + " moves, you only have 10 moves left to escape!!");
+        } else if (numMoves == limit - 2) {
+            print("HURRY UP THE DOOR IS ALMOST CLOSED ... ONLY 2 moves left !! Make them count !");
+        }
+        return numMoves;
     }
 
 
