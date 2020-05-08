@@ -2,6 +2,9 @@ package Maze;
 import Maze.Maze;
 import java.util.*;
 
+//   !!!*** WARNING - the maze has a bug and you can not jump over the pit in the corner on the way to the exit
+//        - MUST MODIFY MAZE FILE TO WIN ! - currently un-changed
+
 /// use downloaded maze program
 /// show map
 /// code interface for player to move in map (up down left right)
@@ -30,7 +33,7 @@ public class MazeMain {
 
         // start game loop - change x value to end
         while (x == 0) {
-            if (!maze.didIWin() && moves < limit + 1) { // love intelli j auto refactor
+            if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 userMove();
                 moves++;
                 maze.printMap();
@@ -39,16 +42,18 @@ public class MazeMain {
                 moveAlert(moves);
                 // print(moves + " moves used so far");  // testing
 
-            } else if (maze.didIWin() && moves < limit + 1) { // love intelli j auto refactor
+            } else if (maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 print("Winner Winner you escaped ! Congrats Maze Runner !");
                 print(" you won the game in only " + moves + " moves");
                 x++;
+                break;
                 // System.exit(0);
 
             } else if (moves == limit) { /// it says 100 but I give an extra
                 print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
                 print("Sorry, but you didn't escape in time - YOU LOSE!");
                 x++;
+                break;
                 // System.exit(0);
             }
         }
