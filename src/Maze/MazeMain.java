@@ -37,6 +37,12 @@ public class MazeMain {
                 print(options);
                 print(moves + " moves used so far");  // testing
 
+                /// add these in
+//                50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
+//                75	Alert! You have made 75 moves, you only have 25 moves left to escape.
+//                90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
+//                100	Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[
+
             } else if (maze.didIWin() == true) {
                 print("error or winner");
                 x++;
@@ -64,10 +70,9 @@ public class MazeMain {
         String direction = scanner.nextLine().toUpperCase().trim();
 
 
-
         if (direction.equals("R") || direction.equals("L") || direction.equals("U") || direction.equals("D") || direction.equals("Q")) {
             // change this to switch - getting quit error
-            if (direction.equals("Q")){
+            if (direction.equals("Q")) {
                 print("Thanks for playing ... Bye Bye now");
                 System.exit(0);
             } else if (direction.equals("L") && (maze.canIMoveLeft())) {
@@ -80,7 +85,7 @@ public class MazeMain {
                 maze.moveRight();
             } else if (maze.isThereAPit(direction)) {
                 navigatePit(direction);
-            }   else {
+            } else {
                 print("Sorry, you’ve hit a wall.");
                 maze.printMap();
                 print(options);
