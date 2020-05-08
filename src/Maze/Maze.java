@@ -56,10 +56,10 @@ public class Maze {
 
     private boolean isThereAPit(int rowMove, int colMove) {
         if (col + colMove > 20 || col + colMove < 0 ||
-                row + rowMove > 20 || row + rowMove < 0  ) {
+                row + rowMove > 20 || row + rowMove < 0) {
             return false;
         } else if (solution[row + rowMove][col + colMove] == '0') {
-            myMap[row+rowMove][col+colMove] = '0';
+            myMap[row + rowMove][col + colMove] = '0';
             return true;
         } else {
             return false;
@@ -68,17 +68,18 @@ public class Maze {
 
     /**
      * Determines if there is a pit in the direction given.
+     *
      * @param dir the direction given ("R", "L", "U", or "D").
      * @return true if there is a pit, false otherwise.
      */
     public boolean isThereAPit(String dir) {
-        if(dir.equals("R")) {
+        if (dir.equals("R")) {
             return isThereAPit(0, 1);
         } else if (dir.equals("L")) {
-            return isThereAPit(0,-1);
+            return isThereAPit(0, -1);
         } else if (dir.equals("U")) {
             return isThereAPit(-1, 0);
-        } else if(dir.equals("D")) {
+        } else if (dir.equals("D")) {
             return isThereAPit(1, 0);
         } else {
             throw new IllegalArgumentException("I didn't understand the direction you entered");
@@ -88,17 +89,18 @@ public class Maze {
     /**
      * Jumps over a pit in the direction given. Moves your character two spaces.
      * Does nothing if there is no pit in that direction.
+     *
      * @param dir the directions given ("R", "L", "U", or "D").
      */
     public void jumpOverPit(String dir) {
-        if(isThereAPit(dir)) {
-            if(dir.equals("R")) {
+        if (isThereAPit(dir)) {
+            if (dir.equals("R")) {
                 move(0, 2);
             } else if (dir.equals("L")) {
                 move(0, -2);
             } else if (dir.equals("U")) {
                 move(-2, 0);
-            } else if(dir.equals("D")) {
+            } else if (dir.equals("D")) {
                 move(2, 0);
             }
         }
@@ -108,57 +110,60 @@ public class Maze {
         if (col + colMove > 20 || col + colMove < 0 ||
                 row + rowMove > 20 || row + rowMove < 0) {
             return false;
-        }
-        else if (solution[row + rowMove][col + colMove] == '*') {
-            myMap[row+rowMove][col+colMove] = '*';
+        } else if (solution[row + rowMove][col + colMove] == '*') {
+            myMap[row + rowMove][col + colMove] = '*';
             return true;
         } else if (solution[row + rowMove][col + colMove] == '0') {
-            myMap[row+rowMove][col+colMove] = '*';
+            myMap[row + rowMove][col + colMove] = '*';
             return false;
         } else {
-            myMap[row+rowMove][col+colMove] = '-';
+            myMap[row + rowMove][col + colMove] = '-';
             return false;
         }
     }
 
     /**
      * Determines if your character can move right.
+     *
      * @return true if there are no obstacles to the right.
      */
     public boolean canIMoveRight() {
-        return canMove(0,1);
+        return canMove(0, 1);
     }
 
     /**
      * Determines if your character can move left.
+     *
      * @return true if there are no obstacles to the left.
      */
     public boolean canIMoveLeft() {
-        return canMove(0,-1);
+        return canMove(0, -1);
     }
 
     /**
      * Determines if your character can move up.
+     *
      * @return true if there are no obstacles above.
      */
     public boolean canIMoveUp() {
-        return canMove(-1,0);
+        return canMove(-1, 0);
     }
 
     /**
      * Determines if your character can move down.
+     *
      * @return true if there are no obstacles below.
      */
     public boolean canIMoveDown() {
-        return canMove(1,0);
+        return canMove(1, 0);
     }
 
     private void move(int rowMove, int colMove) {
-        if(canMove(rowMove, colMove)) {
+        if (canMove(rowMove, colMove)) {
             myMap[row][col] = '*';
             row += rowMove;
             col += colMove;
-            if(solution[row][col] == '0') {
+            if (solution[row][col] == '0') {
                 throw new IllegalArgumentException("Oh NOOOOO you fell into a pit!");
             }
             myMap[row][col] = 'x';
@@ -263,7 +268,7 @@ public class Maze {
         }
         solution[10][18] = '*';
         solution[10][19] = '*';
-        for(int i = 5; i < 13; i++) {
+        for (int i = 5; i < 13; i++) {
             solution[8][i] = '-';
             solution[10][i] = '-';
             solution[9][i] = '*';
@@ -271,7 +276,7 @@ public class Maze {
         for (int i = 8; i < 11; i++) {
             solution[i][13] = '|';
         }
-        for(int i = 5; i < 19; i++) {
+        for (int i = 5; i < 19; i++) {
             solution[17][i] = '-';
             solution[19][i] = '-';
             solution[18][i] = '*';
@@ -279,7 +284,7 @@ public class Maze {
         for (int i = 17; i < 20; i++) {
             solution[i][19] = '|';
         }
-        for(int i = 3; i >= 0; i--) {
+        for (int i = 3; i >= 0; i--) {
             solution[14][i] = '-';
             solution[16][i] = '-';
             solution[15][i] = '*';
@@ -290,24 +295,27 @@ public class Maze {
         addPits();
         //printMap(solution);
     }
-    private void addPits(){
+
+    private void addPits() {
+        // one of these is in the corner of escape route
         solution[1][2] = '0';
         solution[3][7] = '0';
         solution[3][12] = '0';
         solution[6][4] = '0';
         solution[15][4] = '0';
         solution[9][10] = '0';
-        solution[13][17] = '0';
+        solution[13][17] = '0'; /// this is the guilty little rat
         solution[13][15] = '0';
         solution[18][10] = '0';
     }
 
     /**
      * Determines if the user reached the end of the maze.
+     *
      * @return true if the user is at the end, false otherwise.
      */
     public boolean didIWin() {
-        if (row == 10 && col == 19 ) { /// r 10 c 19 default
+        if (row == 10 && col == 19) { /// r 10 c 19 default changed for testing but changed it back
             return true;
         } else {
             return false;

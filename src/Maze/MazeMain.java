@@ -25,11 +25,12 @@ public class MazeMain {
     static String options = "Escape the java maze \n move: (U)p, (D)own, (L)eft or (R)ight \n you are the X _-_ type (Q)uit to exit";
     static String info = "The dots (.) are unexplored .. The - & | are walls * is open and 0 is a pit ";
     static int limit = 100; // how many moves are allowed
+    static int moves = 0;
 
     public static void main(String[] args) {
         intro(); // play intro once
         // int x = 0;
-        int moves = 0;
+
 
         // start game loop - change x value to end
         while (moves <= (limit + 1)) {
@@ -37,14 +38,14 @@ public class MazeMain {
                 print("Winner Winner you escaped ! Congrats Maze Runner !");
                 print(" You won the game in only " + moves + " moves");
                 // x = x+1;
-                 System.exit(0);
+                System.exit(0);
                 // break;
 
             } else if (moves == limit) {
                 print("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
                 print("Sorry, but you didn't escape in time - YOU LOSE! ");
                 // x = x+1;
-                 System.exit(0);
+                System.exit(0);
                 // break;
             } else if (!maze.didIWin() && moves < limit + 2) { // love intelli j auto refactor
                 userMove(); /// user picks move
@@ -52,6 +53,7 @@ public class MazeMain {
                 maze.printMap(); /// where you at
                 print(info); /// what it means
                 print(options); /// what you do
+                print("moves used = " + moves);
                 moveAlert(moves); /// when conditions met
                 // print(moves + " moves used so far");  // testing
 
@@ -154,6 +156,7 @@ public class MazeMain {
 
         if (jump.startsWith("Y")) {
             maze.jumpOverPit(direction);
+
         } else if (jump.startsWith("N")) {
             userMove();
         } else {
