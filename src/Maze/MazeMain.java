@@ -1,5 +1,4 @@
 package Maze;
-import Maze.Maze;
 import java.util.*;
 
 //   !!!*** WARNING - the maze has a bug and you can not jump over the pit in the corner on the way to the exit
@@ -108,7 +107,7 @@ public class MazeMain {
 
     }
 
-    public static String userMove() {
+    public static void userMove() {
         //take desired direction to move:
 
         String direction = scanner.nextLine().toUpperCase().trim();
@@ -145,8 +144,6 @@ public class MazeMain {
         }
 
 
-        return direction;
-
     }
 
     public static void navigatePit(String direction) {
@@ -165,26 +162,24 @@ public class MazeMain {
 
     }
 
-    public static int moveAlert(int moves) {
-        int numMoves = moves;
+    public static void moveAlert(int moves) {
 
-        /*
-        add these in
-                 50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
-                 75	Alert! You have made 75 moves, you only have 25 moves left to escape.
-                 90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
-        */
+        //
+        //add these in
+        //         50	Warning: You have made 50 moves, you have 50 remaining before the maze exit closes
+        //         75	Alert! You have made 75 moves, you only have 25 moves left to escape.
+         //        90	DANGER! You have made 90 moves, you only have 10 moves left to escape!!
 
-        if (numMoves == limit / 2) {
+
+        if (moves == limit / 2) {
             print("Warning: You have used half of your moves, you have " + (limit / 2) + " remaining before the maze exit closes");
-        } else if (numMoves == limit - 25) {
+        } else if (moves == limit - 25) {
             print("Alert! You have made " + (limit - 25) + " moves, you only have 25 moves left to escape.");
-        } else if (numMoves == limit - 10) {
+        } else if (moves == limit - 10) {
             print("DANGER! You have made " + (limit - 10) + " moves, you only have 10 moves left to escape!!");
-        } else if (numMoves == limit - 2) {
+        } else if (moves == limit - 2) {
             print("HURRY UP THE DOOR IS ALMOST CLOSED ... ONLY 2 moves left !! Make them count !");
         }
-        return numMoves;
     }
 
 
