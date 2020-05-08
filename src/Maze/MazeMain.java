@@ -53,7 +53,7 @@ public class MazeMain {
                 maze.printMap(); /// where you at
                 print(info); /// what it means
                 print(options); /// what you do
-                print("moves used = " + moves);
+                // print("moves used = " + moves);  // for testing
                 moveAlert(moves); /// when conditions met
                 // print(moves + " moves used so far");  // testing
 
